@@ -33,5 +33,57 @@ public class ProductsController : Controller
         }
         return View(product);
     }
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+        var product = await _context.Products.FindAsync(id);
+
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        return View(product);
+    }
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, Product product)
+    {
+        if (id != product.Id)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View(product);
+        }
+
+        var existingProduct = await _context.Products.FindAsync(id);
+
+        if (existingProduct == null)
+        {
+            return NotFound();
+        }
+
+        existingProduct.Name = product.Name;
+        existingProduct.Price = product.Price;
+        existingProduct.Quantity = product.Quantity;
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var product = await _context.Products.FindAsync(id);
+        if(product == null)
+        {
+            return NotFound();
+        }
+        _context.Products.Remove(product);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
 }
 

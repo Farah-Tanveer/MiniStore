@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniStore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08b9c5240c32e032a75d6b47008f04bcf61038d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3797efdad9c854a3381594204e6fcf938eda54a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniStore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniStore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
