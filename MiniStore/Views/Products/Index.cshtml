@@ -21,8 +21,7 @@
         {
             <div class="col-sm-6 col-lg-4">
 
-                <div class="card h-100 border-0 shadow-sm">
-
+                <div class="card h-100 border-0 shadow-sm" id="product-@product.Id">
                     <div class="card-body d-flex flex-column">
 
                         <!-- Product header -->
@@ -144,10 +143,11 @@
                                   asp-route-id="@product.Id"
                                   method="post">
 
-                                <button type="submit"
-                                        class="btn btn-danger">
-                                    Delete Product
-                                </button>
+                          <button type="button"
+                                class="btn btn-danger"
+                                onclick="deleteProduct(@product.Id)">
+                         Delete Product
+                        </button>
 
                             </form>
 
@@ -163,3 +163,31 @@
     </div>
 
 </div>
+@section Scripts {
+    <script>
+       async function deleteProduct(id) {
+
+    const response = await fetch(`/Products/Delete/${id}`, {
+        method: 'POST'
+    });
+
+    if (!response.ok) {
+        alert("Something went wrong.");
+        return;
+    }
+
+    const result = await response.json();
+
+    if (result.success) {
+
+        document.getElementById(`product-${id}`).remove();
+
+        const modal = document.getElementById(`deleteModal-${id}`);
+
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(modal);
+
+        modalInstance.hide();
+    }
+}
+    </script>
+}

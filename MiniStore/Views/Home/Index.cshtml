@@ -1,8 +1,190 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+
+    <!-- Hero -->
+    <section class="py-5">
+        <div class="row align-items-center min-vh-75">
+
+            <div class="col-lg-6">
+
+                <span class="badge text-bg-primary mb-3">
+                    Welcome to MiniStore
+                </span>
+
+                <h1 class="display-3 fw-bold mb-4">
+                    Everything you need,
+                    <span class="text-primary">all in one place.</span>
+                </h1>
+
+                <p class="lead text-muted mb-4">
+                    Discover quality products at simple,
+                    transparent prices.
+                </p>
+
+                <div class="d-flex gap-3">
+
+                    <a asp-controller="Products"
+                       asp-action="Index"
+                       class="btn btn-primary btn-lg px-4">
+                        Browse Products
+                    </a>
+
+                    <a href="#why-us"
+                       class="btn btn-outline-secondary btn-lg px-4">
+                        Learn More
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+                <div class="p-5 bg-body-tertiary rounded-4 shadow-sm">
+
+                    <div class="display-1 mb-3">
+                        🛍
+                    </div>
+
+                    <h3 class="fw-bold">
+                        Shop smarter.
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Simple products. Simple prices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Features -->
+    <section id="why-us" class="py-5">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                Why MiniStore?
+            </h2>
+
+            <p class="text-muted">
+                Everything you need for a simple shopping experience.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body text-center p-4">
+
+                        <div class="fs-1 mb-3">
+                            ⚡
+                        </div>
+
+                        <h5 class="fw-bold">
+                            Simple
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            A clean and straightforward shopping
+                            experience without unnecessary complexity.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body text-center p-4">
+
+                        <div class="fs-1 mb-3">
+                            🔒
+                        </div>
+
+                        <h5 class="fw-bold">
+                            Secure
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Built with modern ASP.NET Core technologies
+                            with security in mind.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body text-center p-4">
+
+                        <div class="fs-1 mb-3">
+                            🚀
+                        </div>
+
+                        <h5 class="fw-bold">
+                            Fast
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Quickly find and manage the products
+                            you need.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="py-5">
+
+        <div class="bg-primary text-white rounded-4 p-5 text-center">
+
+            <h2 class="fw-bold mb-3">
+                Ready to explore?
+            </h2>
+
+            <p class="mb-4">
+                Browse our products and find what you're looking for.
+            </p>
+
+            <a asp-controller="Products"
+               asp-action="Index"
+               class="btn btn-light btn-lg px-4">
+                View Products
+            </a>
+
+        </div>
+
+    </section>
+
 </div>

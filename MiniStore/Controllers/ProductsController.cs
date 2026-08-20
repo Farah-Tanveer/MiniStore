@@ -83,7 +83,11 @@ public class ProductsController : Controller
         }
         _context.Products.Remove(product);
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        return Json(new
+        {
+            success = true,
+            message = "Product deleted successfully."
+        });
     }
 }
 
