@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MiniStore.Data;
 using MiniStore.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace MiniStore.Controllers;
-
+[Authorize]
 public class ProductsController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -17,11 +18,13 @@ public class ProductsController : Controller
         var products = await _context.Products.ToListAsync();
         return View(products);
     }
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Create()
     {
         return View();
     }
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(Product product)
     {
@@ -33,6 +36,7 @@ public class ProductsController : Controller
         }
         return View(product);
     }
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
@@ -45,6 +49,7 @@ public class ProductsController : Controller
 
         return View(product);
     }
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Edit(int id, Product product)
     {
@@ -73,6 +78,7 @@ public class ProductsController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {

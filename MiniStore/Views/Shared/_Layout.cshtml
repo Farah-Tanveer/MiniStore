@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -54,21 +57,41 @@
 
             </ul>
 
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 align-items-center">
 
-                <a asp-area="Identity"
-                   asp-page="/Account/Login"
-                   class="btn btn-outline-primary">
-                    Login
-                </a>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <span class="text-muted">
+            Hello, @User.Identity?.Name
+        </span>
 
-                <a asp-area="Identity"
-                   asp-page="/Account/Register"
-                   class="btn btn-primary">
-                    Register
-                </a>
+        <form asp-area="Identity"
+              asp-page="/Account/Logout"
+              method="post">
 
-            </div>
+            <button type="submit"
+                    class="btn btn-outline-danger">
+                Logout
+            </button>
+
+        </form>
+    }
+    else
+    {
+        <a asp-area="Identity"
+           asp-page="/Account/Login"
+           class="btn btn-outline-primary">
+            Login
+        </a>
+
+        <a asp-area="Identity"
+           asp-page="/Account/Register"
+           class="btn btn-primary">
+            Register
+        </a>
+    }
+
+</div>
 
         </div>
 
